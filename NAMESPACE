@@ -3,4 +3,6 @@
 export(Malcom)
 export(Park)
 export(lotka)
+export(timesTwo)
+importFrom(Rcpp,evalCpp)
 useDynLib(IslaNublar, .registration = TRUE)

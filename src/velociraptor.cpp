@@ -78,7 +78,7 @@ extern "C" {
     SEXP s = PROTECT(allocVector(REALSXP, 1));
     REAL(s)[0] =  INTEGER(people)[0] * 6.6;
     REAL(s)[0] -= REAL(Profit(dino))[0];
-    Rprintf("Grrr\n");
+    Rprintf("GrrrR\n");
     UNPROTECT(1);
     return(s);
   }

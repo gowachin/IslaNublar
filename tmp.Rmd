@@ -36,4 +36,9 @@ plot(1, type = "n", xlim = c(0, n), ylim = c(0, K+ 0.1*K))
 lines(res[[1]], col = "darkgreen")
 lines(res[[2]], col = "darkred")
 ```
+## Using Rcpp
+
+```{r}
+timesTwo(42)
+```
 

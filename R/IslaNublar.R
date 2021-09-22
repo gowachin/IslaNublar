@@ -13,7 +13,7 @@ Malcom <- function() {
 #'
 #' @param people int default = 0
 #' @param dino int default = 0
-#'
+#' @importFrom Rcpp evalCpp
 #' @useDynLib IslaNublar, .registration = TRUE
 #'
 #' @export
@@ -53,3 +53,4 @@ lotka <- function(prey_t, pred_t, prey_gr, pred_gr,
                PACKAGE = "IslaNublar")
   return(res)
 }
+
