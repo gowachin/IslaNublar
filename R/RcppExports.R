@@ -11,3 +11,13 @@ timesTwo <- function(x) {
     .Call(`_IslaNublar_timesTwo`, x)
 }
 
+#' Costa
+#'
+#' Using the Lotka class with Rcpp
+#'
+#' @param x An integer vector
+#' @export
+Costa <- function(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n) {
+    .Call(`_IslaNublar_Costa`, size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n)
+}
+
