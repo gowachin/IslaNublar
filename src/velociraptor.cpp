@@ -14,39 +14,29 @@
 
 using namespace std;
 
-extern "C"{
-    Lotka::Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
-               SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N){
+Lotka::Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
+             SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N){
 
-    SEXP res;
+  PROTECT(prey = allocVector(REALSXP, N +1));
+  PROTECT(pred = allocVector(REALSXP, N +1));
+  REAL(prey)[0] = REAL(size_p)[0];
+  REAL(pred)[0] = REAL(size_P)[0];
 
-    PROTECT(prey = allocVector(REALSXP, N +1));
-    PROTECT(pred = allocVector(REALSXP, N +1));
-    REAL(prey)[0] = REAL(size_p)[0];
-    REAL(pred)[0] = REAL(size_P)[0];
-
-    for(int t = 0; t < N ; t++){
-      Lotka::Prey(prey, pred, gr_p, Kp, inter_pP, t);
-      Lotka::Pred(pred, prey, gr_P, KP, inter_Pp, t);
-    }
-
-    PROTECT(res = allocVector(VECSXP, 2));
-    SET_VECTOR_ELT(res, 0, prey);
-    SET_VECTOR_ELT(res, 1, pred);
-
-    UNPROTECT(3);
+  for(int t = 0; t < N ; t++){
+    Lotka::Prey(prey, pred, gr_p, Kp, inter_pP, t);
+    Lotka::Pred(pred, prey, gr_P, KP, inter_Pp, t);
   }
+
+  UNPROTECT(2);
 }
 
-extern "C"{
-  void Lotka::Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t){
-    if(REAL(size)[t] <= 0){
-      REAL(size)[t+1] = 0;
-    } else {
-      // REAL(size)[t+1] = REAL(size)[t] + REAL(size)[t] * REAL(gr)[0] *
-      //   (1 - REAL(size)[t] / REAL(K)[0] ) + REAL(other)[t] * REAL(inter_Pp)[0];
-      REAL(size)[t+1] = REAL(size)[t] + REAL(size)[t] * REAL(gr)[0] + REAL(size)[t] * REAL(other)[t] * REAL(inter_Pp)[0];
-    }
+void Lotka::Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t){
+  if(REAL(size)[t] <= 0){
+    REAL(size)[t+1] = 0;
+  } else {
+    // REAL(size)[t+1] = REAL(size)[t] + REAL(size)[t] * REAL(gr)[0] *
+    //   (1 - REAL(size)[t] / REAL(K)[0] ) + REAL(other)[t] * REAL(inter_Pp)[0];
+    REAL(size)[t+1] = REAL(size)[t] + REAL(size)[t] * REAL(gr)[0] + REAL(size)[t] * REAL(other)[t] * REAL(inter_Pp)[0];
   }
 }
 
@@ -58,8 +48,8 @@ extern "C" {
     SEXP output;
 
     Lotka * object = new Lotka(size_p, gr_p, Kp, inter_pP,
-                              size_P, gr_P, KP, inter_Pp,
-                              N);
+                               size_P, gr_P, KP, inter_Pp,
+                               N);
 
     PROTECT(output = allocVector(VECSXP, 2));
     SET_VECTOR_ELT(output, 0, object->prey);
@@ -68,7 +58,7 @@ extern "C" {
     UNPROTECT(1);
     return(output);
     delete object;
-   }
+  }
 }
 
 

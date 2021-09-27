@@ -12,13 +12,12 @@
 
 using namespace std;
 
-extern "C" {
-  SEXP Profit(SEXP dino)
-  {
-    SEXP p = PROTECT(allocVector(REALSXP, 1));
-    REAL(p)[0] = INTEGER(dino)[0] * 0.42;
-    Rprintf("Picsou!\n");
-    UNPROTECT(1);
-    return(p);
-  }
+SEXP Profit(SEXP dino)
+{
+  SEXP p = PROTECT(allocVector(REALSXP, 1));
+  REAL(p)[0] = INTEGER(dino)[0] * 0.42;
+  Rprintf("Picsou!\n");
+  UNPROTECT(1);
+  return(p);
 }
+

@@ -26,7 +26,7 @@ I test a simple Lotka-Volterra Model here.
 
 ```{r}
 library(IslaNublar)
-n = 40
+n = 50
 K = 50
 res <- lotka(prey_t = 10, pred_t = 10, prey_gr = 0.26, pred_gr = -0.32,
              prey_K = K, pred_K = K, 

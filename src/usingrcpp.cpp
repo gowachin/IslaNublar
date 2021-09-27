@@ -1,8 +1,9 @@
 #include <Rcpp.h>
 #include "lotka.h"
-using namespace Rcpp;
+#include "mod_prey.h"
+#include "volterra.h"
 
-//[[Rcpp::plugins(cpp11)]]
+using namespace Rcpp;
 
 //' Double a value
 //'
@@ -28,11 +29,14 @@ List Costa(NumericVector size_p, NumericVector gr_p,
           NumericVector KP, NumericVector inter_Pp,
           NumericVector n)
 {
+  // List l (2);
   int N = n[0];
-
-  Lotka * object = new Lotka(size_p, gr_p, Kp, inter_pP,
-                             size_P, gr_P, KP, inter_Pp,
-                             N);
-
+  // Rprintf("in Cost \n");
+  Volterra * object = new Volterra(size_p, gr_p, Kp, inter_pP,
+                                   size_P, gr_P, KP, inter_Pp,
+                                   N);
+  // l[0] = object->prey;
+  // l[1] = object->pred;
   return List::create(object->prey, object->pred);
+  // return l;
 }

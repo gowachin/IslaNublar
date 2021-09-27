@@ -1,7 +1,9 @@
 #ifndef __LOTKA_H__
 #define __LOTKA_H__
 
-#include <Rdefines.h>
+// #include <Rcpp.h>
+// using namespace Rcpp;
+
 class Lotka
 {
   public:
@@ -19,5 +21,20 @@ class Lotka
     // module pred
     void Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t);
 };
+
+// class Volterra
+// {
+//   public:
+//     // NumericVector prey, pred;
+//     //constructor
+//     Volterra(double size_p, double gr_p, double Kp, double inter_pP,
+//              double size_P, double gr_P, double KP, double inter_Pp, int N);
+//     //destructor
+//     ~Volterra();
+//
+//     void Preyb(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_pP, int t);
+//     // module pred
+//     void Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t);
+// };
 
 #endif
