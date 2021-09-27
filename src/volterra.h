@@ -16,9 +16,10 @@ class Volterra
     //destructor
     ~Volterra();
 
-    void Preyb(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_pP, int t);
+    void Preyb(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t);
     // module pred
-    void Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t);
+    void Pred(NumericVector size, NumericVector other, NumericVector gr,
+              NumericVector K, NumericVector inter_Pp, int t);
 };
 
 #endif

@@ -22,13 +22,15 @@ Volterra::Volterra(NumericVector size_p, NumericVector gr_p, NumericVector Kp, N
   this->prey = in_prey;
 }
 
-void Volterra::Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t){
-  if(REAL(size)[t] <= 0){
-    REAL(size)[t+1] = 0;
+void Volterra::Pred(NumericVector size, NumericVector other, NumericVector gr,
+                    NumericVector K, NumericVector inter_Pp, int t){
+  if(size[t] <= 0){
+    size[t+1] = 0;
   } else {
     // REAL(size)[t+1] = REAL(size)[t] + REAL(size)[t] * REAL(gr)[0] *
     //   (1 - REAL(size)[t] / REAL(K)[0] ) + REAL(other)[t] * REAL(inter_Pp)[0];
-    REAL(size)[t+1] = REAL(size)[t] + REAL(size)[t] * REAL(gr)[0] + REAL(size)[t] * REAL(other)[t] * REAL(inter_Pp)[0];
+    size[t+1] = size[t] +size[t] * gr[0] + size[t] * other[t] * inter_Pp[0];
+    // modified to use Rcpp format, this is easier to read.
   }
 }
 
