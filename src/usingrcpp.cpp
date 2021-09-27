@@ -37,6 +37,7 @@ List Costa(NumericVector size_p, NumericVector gr_p,
                                    N);
   // l[0] = object->prey;
   // l[1] = object->pred;
-  return List::create(object->prey, object->pred);
+  return Rcpp::List::create(Rcpp::Named("prey") = object->prey,
+                      Rcpp::Named("pred") = object->pred);
   // return l;
 }
