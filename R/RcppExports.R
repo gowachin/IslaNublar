@@ -13,9 +13,17 @@ timesTwo <- function(x) {
 
 #' Costa
 #'
-#' Using the Lotka class with Rcpp
+#' Using the Volterra class with Rcpp
 #'
-#' @param x An integer vector
+#' @param size_p number of prey at t0
+#' @param gr_p prey growth rate
+#' @param Kp capacity for prey
+#' @param inter_pP interaction of pred on prey
+#' @param size_P number of predator at t0
+#' @param gr_P pred growth rate
+#' @param KP capacity for pred
+#' @param inter_Pp interaction of prey on pred
+#' @param n number of times
 #' @export
 Costa <- function(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n) {
     .Call(`_IslaNublar_Costa`, size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n)
