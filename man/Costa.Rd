@@ -7,8 +7,24 @@
 Costa(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n)
 }
 \arguments{
-\item{x}{An integer vector}
+\item{size_p}{number of prey at t0}
+
+\item{gr_p}{prey growth rate}
+
+\item{Kp}{capacity for prey}
+
+\item{inter_pP}{interaction of pred on prey}
+
+\item{size_P}{number of predator at t0}
+
+\item{gr_P}{pred growth rate}
+
+\item{KP}{capacity for pred}
+
+\item{inter_Pp}{interaction of prey on pred}
+
+\item{n}{number of times}
 }
 \description{
-Using the Lotka class with Rcpp
+Using the Volterra class with Rcpp
 }

@@ -18,9 +18,17 @@ NumericVector timesTwo(NumericVector x) {
 
 //' Costa
 //'
-//' Using the Lotka class with Rcpp
+//' Using the Volterra class with Rcpp
 //'
-//' @param x An integer vector
+//' @param size_p number of prey at t0
+//' @param gr_p prey growth rate
+//' @param Kp capacity for prey
+//' @param inter_pP interaction of pred on prey
+//' @param size_P number of predator at t0
+//' @param gr_P pred growth rate
+//' @param KP capacity for pred
+//' @param inter_Pp interaction of prey on pred
+//' @param n number of times
 //' @export
 // [[Rcpp::export]]
 List Costa(NumericVector size_p, NumericVector gr_p,
