@@ -13,7 +13,8 @@ lotka(
   pred_K,
   int_predprey,
   int_preypred,
-  n
+  n,
+  verbose = FALSE
 )
 }
 \arguments{

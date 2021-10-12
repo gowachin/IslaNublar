@@ -1,21 +1,11 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <fstream>
-#include <R.h>
 #include <Rdefines.h>
 #include <Rmath.h>
 #include "hamond.h"
 #include "lotka.h"
 #include "mod_prey.h"
 
-using namespace std;
-
 Lotka::Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
-             SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N){
+             SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N, int verbose){
 
   PROTECT(prey = allocVector(REALSXP, N +1));
   PROTECT(pred = allocVector(REALSXP, N +1));
@@ -23,6 +13,7 @@ Lotka::Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
   REAL(pred)[0] = REAL(size_P)[0];
 
   for(int t = 0; t < N ; t++){
+    if(verbose && (t % 10) == 0) Rprintf("t = %i\n", t);
     Lotka::Prey(prey, pred, gr_p, Kp, inter_pP, t);
     Lotka::Pred(pred, prey, gr_P, KP, inter_Pp, t);
   }
@@ -42,14 +33,15 @@ void Lotka::Pred(SEXP size, SEXP other, SEXP gr, SEXP K, SEXP inter_Pp, int t){
 
 extern "C" {
   SEXP Isla(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
-            SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, SEXP n)
+            SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, SEXP n, SEXP verbose)
   {
     int N = INTEGER(n)[0];
+    int VERBOSE = INTEGER(verbose)[0];
     SEXP output;
 
     Lotka * object = new Lotka(size_p, gr_p, Kp, inter_pP,
                                size_P, gr_P, KP, inter_Pp,
-                               N);
+                               N, VERBOSE);
 
     PROTECT(output = allocVector(VECSXP, 2));
     SET_VECTOR_ELT(output, 0, object->prey);

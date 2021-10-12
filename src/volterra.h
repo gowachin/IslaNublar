@@ -12,7 +12,8 @@ class Volterra
     NumericVector prey, pred;
     //constructor
     Volterra(NumericVector size_p, NumericVector gr_p, NumericVector Kp, NumericVector inter_pP,
-             NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp, int N);
+             NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp,
+             int N, int verbose);
     //destructor
     ~Volterra();
 

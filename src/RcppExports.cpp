@@ -22,8 +22,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // Costa
-List Costa(NumericVector size_p, NumericVector gr_p, NumericVector Kp, NumericVector inter_pP, NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp, NumericVector n);
-RcppExport SEXP _IslaNublar_Costa(SEXP size_pSEXP, SEXP gr_pSEXP, SEXP KpSEXP, SEXP inter_pPSEXP, SEXP size_PSEXP, SEXP gr_PSEXP, SEXP KPSEXP, SEXP inter_PpSEXP, SEXP nSEXP) {
+List Costa(NumericVector size_p, NumericVector gr_p, NumericVector Kp, NumericVector inter_pP, NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp, NumericVector n, bool verbose);
+RcppExport SEXP _IslaNublar_Costa(SEXP size_pSEXP, SEXP gr_pSEXP, SEXP KpSEXP, SEXP inter_pPSEXP, SEXP size_PSEXP, SEXP gr_PSEXP, SEXP KPSEXP, SEXP inter_PpSEXP, SEXP nSEXP, SEXP verboseSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -36,21 +36,22 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< NumericVector >::type KP(KPSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type inter_Pp(inter_PpSEXP);
     Rcpp::traits::input_parameter< NumericVector >::type n(nSEXP);
-    rcpp_result_gen = Rcpp::wrap(Costa(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n));
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(Costa(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n, verbose));
     return rcpp_result_gen;
 END_RCPP
 }
 
 RcppExport SEXP Danger(SEXP, SEXP);
-RcppExport SEXP Isla(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
+RcppExport SEXP Isla(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP Profit(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
     {"_IslaNublar_timesTwo", (DL_FUNC) &_IslaNublar_timesTwo, 1},
-    {"_IslaNublar_Costa", (DL_FUNC) &_IslaNublar_Costa, 9},
-    {"Danger", (DL_FUNC) &Danger, 2},
-    {"Isla",   (DL_FUNC) &Isla,   9},
-    {"Profit", (DL_FUNC) &Profit, 1},
+    {"_IslaNublar_Costa", (DL_FUNC) &_IslaNublar_Costa, 10},
+    {"Danger", (DL_FUNC) &Danger,  2},
+    {"Isla",   (DL_FUNC) &Isla,   10},
+    {"Profit", (DL_FUNC) &Profit,  1},
     {NULL, NULL, 0}
 };
 

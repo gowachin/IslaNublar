@@ -5,7 +5,8 @@
 using namespace Rcpp;
 
 Volterra::Volterra(NumericVector size_p, NumericVector gr_p, NumericVector Kp, NumericVector inter_pP,
-                   NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp, int N)
+                   NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp,
+                   int N, int verbose = 0)
 {
   NumericVector in_prey (N+1);
   in_prey[0] = size_p[0];
@@ -13,6 +14,9 @@ Volterra::Volterra(NumericVector size_p, NumericVector gr_p, NumericVector Kp, N
   // or push_back the vector for each iteration (memory heavy process)
   pred.push_back(size_P[0]);
   for(int t = 0; t < N ; t++){
+    if(verbose){
+      Rprintf("t = %i\n", t);
+    }
     pred.push_back(0);
     Volterra::Preyb(in_prey, pred, gr_p, Kp, inter_pP, t);
     // Rprintf("Prey %0.f", in_prey[t]);

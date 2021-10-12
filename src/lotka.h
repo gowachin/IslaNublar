@@ -10,7 +10,7 @@ class Lotka
     SEXP prey, pred;
     //constructeur
     Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
-         SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N);
+         SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N, int verbose);
 
     //destructeur
     ~Lotka();

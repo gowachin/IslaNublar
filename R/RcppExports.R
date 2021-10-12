@@ -25,7 +25,7 @@ timesTwo <- function(x) {
 #' @param inter_Pp interaction of prey on pred
 #' @param n number of times
 #' @export
-Costa <- function(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n) {
-    .Call(`_IslaNublar_Costa`, size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n)
+Costa <- function(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n, verbose) {
+    .Call(`_IslaNublar_Costa`, size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n, verbose)
 }
 

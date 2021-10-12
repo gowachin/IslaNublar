@@ -4,7 +4,7 @@
 \alias{Costa}
 \title{Costa}
 \usage{
-Costa(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n)
+Costa(size_p, gr_p, Kp, inter_pP, size_P, gr_P, KP, inter_Pp, n, verbose)
 }
 \arguments{
 \item{size_p}{number of prey at t0}

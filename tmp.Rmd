@@ -30,10 +30,10 @@ n = 50
 K = 50
 res <- lotka(prey_t = 10, pred_t = 10, prey_gr = 0.26, pred_gr = -0.32,
              prey_K = K, pred_K = K, 
-             int_predprey = -0.04, int_preypred = 0.019, n = n )
+             int_predprey = -0.04, int_preypred = 0.019, n = n, verbose = FALSE)
 
 rest <- Costa(10, 0.26, K, -0.04,
-              10, -0.32, K, 0.019, n)
+              10, -0.32, K, 0.019, n, verbose = FALSE)
 
 plot(1, type = "n", xlim = c(0, n), ylim = c(0, K+ 0.1*K))
 lines(res[[1]], col = "darkgreen")

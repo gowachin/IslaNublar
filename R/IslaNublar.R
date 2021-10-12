@@ -42,14 +42,14 @@ Park <- function(people = 0, dino = 0){
 #' @export
 lotka <- function(prey_t, pred_t, prey_gr, pred_gr,
                   prey_K, pred_K,
-                  int_predprey, int_preypred, n ){
+                  int_predprey, int_preypred, n, verbose = FALSE){
   res <- .Call("Isla",
                size_p = as.numeric(prey_t), gr_p = as.numeric(prey_gr),
                Kp = as.numeric(prey_K), inter_pP = as.numeric(int_predprey),
 
                size_P = pred_t, gr_P = as.numeric(pred_gr),
                KP = as.numeric(pred_K), inter_Pp = as.numeric(int_preypred),
-               n = as.integer(n),
+               n = as.integer(n), verbose = as.integer(verbose),
                PACKAGE = "IslaNublar")
   return(res)
 }

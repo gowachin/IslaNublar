@@ -35,14 +35,14 @@ List Costa(NumericVector size_p, NumericVector gr_p,
           NumericVector Kp, NumericVector inter_pP,
           NumericVector size_P, NumericVector gr_P,
           NumericVector KP, NumericVector inter_Pp,
-          NumericVector n)
+          NumericVector n, bool verbose)
 {
   // List l (2);
   int N = n[0];
   // Rprintf("in Cost \n");
   Volterra * object = new Volterra(size_p, gr_p, Kp, inter_pP,
                                    size_P, gr_P, KP, inter_Pp,
-                                   N);
+                                   N, verbose);
   // l[0] = object->prey;
   // l[1] = object->pred;
   return Rcpp::List::create(Rcpp::Named("prey") = object->prey,
