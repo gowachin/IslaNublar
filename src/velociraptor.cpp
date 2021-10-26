@@ -6,7 +6,6 @@
 
 Lotka::Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
              SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N, int verbose){
-
   PROTECT(prey = allocVector(REALSXP, N +1));
   PROTECT(pred = allocVector(REALSXP, N +1));
   REAL(prey)[0] = REAL(size_p)[0];
