@@ -9,6 +9,14 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+
+```{r dev, include=FALSE, eval=FALSE}
+devtools::unload("IslaNublar")
+devtools::clean_dll()
+remove.packages("IslaNublar")
+devtools::load_all()
+```
+
 ## Calling C from R
 
 I use `.Call` to call a function for computing danger in Jurassic Park
@@ -45,9 +53,11 @@ lines(rest[[2]], col = "red", type = "p", pch = 3)
 ```
 ## Using SEXP pointeurs
 
-```{r}
+Still not working for now
+
+```{r, eval = FALSE}
 library(IslaNublar)
-n = 15
+n = 18
 K = 50
 res <- Costa(10, 0.26, K, -0.04,
               10, -0.32, K, 0.019, n, verbose = FALSE)

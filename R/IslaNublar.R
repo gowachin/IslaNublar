@@ -54,3 +54,11 @@ lotka <- function(prey_t, pred_t, prey_gr, pred_gr,
   return(res)
 }
 
+
+
+
+
+
+
+
+

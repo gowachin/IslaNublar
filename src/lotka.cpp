@@ -7,15 +7,14 @@
 Lotka::Lotka(SEXP size_p, SEXP gr_p, SEXP Kp, SEXP inter_pP,
              SEXP size_P, SEXP gr_P, SEXP KP, SEXP inter_Pp, int N, int verbose){
 
-  // PROTECT(prey = allocVector(REALSXP, N +1));
-  SEXP prey;
+  PROTECT(prey = allocVector(REALSXP, N +1));
   PROTECT(pred = allocVector(REALSXP, N +1));
   REAL(prey)[0] = REAL(size_p)[0];
   REAL(pred)[0] = REAL(size_P)[0];
 
   for(int t = 0; t < N ; t++){
     if(verbose && (t % 10) == 0) Rprintf("t = %i\n", t);
-    Lotka::Prey(pred, gr_p, Kp, inter_pP, t);
+    Lotka::Prey(prey, pred, gr_p, Kp, inter_pP, t);
     Lotka::Pred(pred, prey, gr_P, KP, inter_Pp, t);
   }
 
