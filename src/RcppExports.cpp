@@ -10,17 +10,6 @@ Rcpp::Rostream<true>&  Rcpp::Rcout = Rcpp::Rcpp_cout_get();
 Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 #endif
 
-// timesTwo
-NumericVector timesTwo(NumericVector x);
-RcppExport SEXP _IslaNublar_timesTwo(SEXP xSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    rcpp_result_gen = Rcpp::wrap(timesTwo(x));
-    return rcpp_result_gen;
-END_RCPP
-}
 // Costa
 List Costa(NumericVector size_p, NumericVector gr_p, NumericVector Kp, NumericVector inter_pP, NumericVector size_P, NumericVector gr_P, NumericVector KP, NumericVector inter_Pp, NumericVector n, bool verbose);
 RcppExport SEXP _IslaNublar_Costa(SEXP size_pSEXP, SEXP gr_pSEXP, SEXP KpSEXP, SEXP inter_pPSEXP, SEXP size_PSEXP, SEXP gr_PSEXP, SEXP KPSEXP, SEXP inter_PpSEXP, SEXP nSEXP, SEXP verboseSEXP) {
@@ -41,14 +30,28 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// Sorna
+List Sorna(List prey, List pred, NumericVector n, bool verbose);
+RcppExport SEXP _IslaNublar_Sorna(SEXP preySEXP, SEXP predSEXP, SEXP nSEXP, SEXP verboseSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type prey(preySEXP);
+    Rcpp::traits::input_parameter< List >::type pred(predSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type n(nSEXP);
+    Rcpp::traits::input_parameter< bool >::type verbose(verboseSEXP);
+    rcpp_result_gen = Rcpp::wrap(Sorna(prey, pred, n, verbose));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 RcppExport SEXP Danger(SEXP, SEXP);
 RcppExport SEXP Isla(SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP, SEXP);
 RcppExport SEXP Profit(SEXP);
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_IslaNublar_timesTwo", (DL_FUNC) &_IslaNublar_timesTwo, 1},
     {"_IslaNublar_Costa", (DL_FUNC) &_IslaNublar_Costa, 10},
+    {"_IslaNublar_Sorna", (DL_FUNC) &_IslaNublar_Sorna, 4},
     {"Danger", (DL_FUNC) &Danger,  2},
     {"Isla",   (DL_FUNC) &Isla,   10},
     {"Profit", (DL_FUNC) &Profit,  1},
