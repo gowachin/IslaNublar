@@ -1,16 +1,7 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <vector>
-#include <string>
-#include <sstream>
-#include <iostream>
-#include <fstream>
 #include <R.h>
 #include <Rdefines.h>
 #include <Rmath.h>
 #include "hamond.h"
-
-using namespace std;
 
 SEXP Profit(SEXP dino)
 {
